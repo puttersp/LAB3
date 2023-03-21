@@ -129,7 +129,7 @@ int main(void)
 	  switch(MotorControlEnable){
 	  case 0:
 		  if(HAL_GetTick() > timestamp){
-			  timestamp = HAL_GetTick() + 100;
+			  timestamp = HAL_GetTick() + 20;
 			  if(MotorSetDuty == 0){
 				  MotorReadRPM = 0;
 			  }
@@ -144,10 +144,13 @@ int main(void)
 		  if(rpm_c != rpm_l){
 			  MotorSetDuty = (MotorSetRPM * 10000) / 40;
 			  MotorSetDuty *= 0.3;
+			  if(MotorSetRPM <=3){
+				  MotorSetDuty = 0;
+			  }
 		  }
 
 		  if(HAL_GetTick() > timestamp){
-			  timestamp = HAL_GetTick() + 100;
+			  timestamp = HAL_GetTick() + 20;
 
 			  if(MotorSetRPM == 0){
 				  MotorReadRPM = 0;
