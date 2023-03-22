@@ -49,7 +49,7 @@ UART_HandleTypeDef huart2;
 uint32_t buf[20];
 float vel;
 
-uint32_t MotorSetDuty = 1000;
+int32_t MotorSetDuty = 1000;
 
 uint16_t rpm_c,rpm_l;
 
@@ -175,7 +175,9 @@ int main(void)
 					  }
 				  }
 			  }
-
+			  if(MotorSetDuty <= 0){
+				  MotorSetDuty+=50;
+			  }
 			  __HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,MotorSetDuty);
 		  }
 
