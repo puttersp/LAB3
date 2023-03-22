@@ -49,7 +49,7 @@ UART_HandleTypeDef huart2;
 uint32_t buf[20];
 float vel;
 
-int32_t MotorSetDuty = 1000;
+int32_t MotorSetDuty = 0;
 
 uint16_t rpm_c,rpm_l;
 
@@ -257,7 +257,7 @@ static void MX_TIM1_Init(void)
   htim1.Instance = TIM1;
   htim1.Init.Prescaler = 83;
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim1.Init.Period = 10000;
+  htim1.Init.Period = 9999;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
   htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
